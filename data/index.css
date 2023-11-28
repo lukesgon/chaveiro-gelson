@@ -1,0 +1,177 @@
+/* 
+(#CC9933) Laranja dourado.
+(#000) Preto Puro.
+(#333333) Grafite.
+(#FFF) Branco Puro.
+*/
+
+
+/* Universal ////////////////////////////////// */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    /* colors */
+    --orange-color: #CC9933;
+    --black-color: #000;
+    --grey-color: #ddd;
+    --white-color: #fff;
+
+    /* animations */
+    --transtime: 0.3s ease-in-out;
+    --dftrescale: scale(1.05);
+    @media (prefers-reduced-motion: reduce) {
+        --transtime: linear; /* relative of accessibility transitions animations */
+    }
+}
+
+html {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: var(--black-color);
+}
+
+h2 {
+    margin: 0.3rem 0.5rem ;
+    color: var(--orange-color);
+}
+
+p {
+    margin: 0 0.5rem;
+}
+
+hr {
+    color: var(--grey-color);
+}
+
+/* Header and navbar/////////////////////////////////// */
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--black-color);
+}
+
+#logo {
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--white-color);
+    padding: 0.3rem;
+    border-radius: 50%;
+    margin: 0.5rem;
+    transition: var(--transtime);
+}
+
+#logo:hover {
+    background-color: var(--orange-color);
+    transform: var(--dftrescale);
+}
+
+h1 {
+    color: var(--orange-color);
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0.3rem 0.3rem;
+    padding: 0.3rem;
+    border: none;
+    border-radius: 0.3rem;
+    transition: var(--transtime);
+    background-color: var(--grey-color);
+}
+
+.nav-btn:hover {
+    transform: var(--dftrescale);
+    color: var(--white-color);
+    background-color: var(--orange-color);
+}
+
+/* Carousel /////////////////////////////////////////// */
+
+#carousel {
+    height: 16rem;
+    background-color: var(--grey-color);
+}
+
+/* Main /////////////////////////////////////////////// */
+
+#nossos-servicos {
+    display: flex;
+}
+
+main > hr {
+    margin-bottom: 0.15rem;
+}
+
+aside {
+    width: fit-content;
+}
+
+main > p {
+    color: var(--black-color);
+}
+
+.btn-aside {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0.15rem 0.5rem;
+    padding: 0.3rem;
+    border: none;
+    border-radius: 0.3rem;
+    transition: var(--transtime);
+    width: 5.5rem;
+    background-color: var(--black-color);
+    color: var(--grey-color);
+}
+
+.btn-aside:hover {
+    transform: var(--dftrescale);
+    background-color: var(--orange-color);
+    color: var(--white-color);
+    cursor: pointer;
+}
+
+/* Footer ///////////////////////////////////////////// */
+
+footer {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: fit-content;
+    background-color: var(--black-color);
+}
+
+footer > p {
+    color: var(--grey-color);
+    font-size: smaller;
+}
+
+footer > p > a {
+    color: var(--white-color);
+}
