@@ -16,8 +16,29 @@
                 "file": "project/drafts/Eschematics/homePage.md"
               }
             }
+          },
+          {
+            "id": "a0a147336a4f9223",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "project/drafts/Eschematics/catalogo.md"
+              }
+            }
+          },
+          {
+            "id": "0d356e39b22a26df",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "project/drafts/Eschematics/homePage.md"
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -146,10 +167,14 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "286c6b3819efd8cd",
+  "active": "0d356e39b22a26df",
   "lastOpenFiles": [
-    "README.md",
+    "project/drafts/Estilização e paleta de cores.md",
     "project/drafts/Eschematics/homePage.md",
+    "project/drafts/Eschematics/catalogo.md",
+    "project/drafts/logo.xcf",
+    "data/assets/img/logo.png",
+    "README.md",
     "project/drafts/Eschematics/homePage.png",
     "project/drafts/Eschematics",
     "^.md",
@@ -163,7 +188,6 @@
     "project/drafts",
     "data/Assets/img",
     "data/Assets/icon",
-    "data/Assets/font",
-    "data/Assets"
+    "data/Assets/font"
   ]
 }
