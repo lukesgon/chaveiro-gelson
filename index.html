@@ -10,7 +10,7 @@
 <body>
     <header class="background-color-black font-color-white">
         <figure>
-            <a href="#logo">
+            <a href="">
             <img 
             src="./data/assets/img/logo.png" 
             alt="chaveiro_gelson_logo" 
@@ -21,27 +21,56 @@
         <h1>CHAVEIRO GELSON</h1>
         
         <nav>
-            <a href="#nossos-servicos" class="nav-btn background-color-grey">Nossos Serviços</a>
-            <a href="#sobre-nos" class="nav-btn background-color-grey">Sobre Nós</a>
+            <a href="#nossos-servicos" class="nav-btn">Nossos Serviços</a>
+            <a href="#orcamento" class="nav-btn">Orçamento</a>
             <a href="#onde-estamos" class="nav-btn background-color-grey">Onde Estamos</a>
+            <a href="#sobre-nos" class="nav-btn background-color-grey">Sobre Nós</a>
             <a href="#depoimentos" class="nav-btn background-color-grey">Depoimentos</a>
         </nav>
     </header>
 
-    <section>
-        <section id="carousel" class="background-color-grey"></section>
+    <section id="servico">
+        <h2 id="nossos-servicos">Nossos Serviços</h2>
+        <hr>
+        <section id="carousel" class="background-color-grey">
+            <section id="slot-1" class="slot">
+                <figure>
+                    <img src="./data/assets/img/abertura.png" alt="" class="carousel-img">
+                </figure>
+                <section class="slot-text">
+                    <p class="p-slot">Atendimento a domicílio</p>
+                </section>
+            </section>
+            <section id="slot-2" class="slot">
+                <figure>
+                    <img src="./data/assets/img/chave_canivete.png" alt="" class="carousel-img">
+                </figure>
+                <section class="slot-text">
+                    <p class="p-slot">Chaves Codificadas</p>
+                </section>
+            </section>
+            <section id="slot-3" class="slot">
+                <figure>
+                    <img src="./data/assets/img/copiadora_chaves.png" alt="" class="carousel-img">
+                </figure>
+                <section class="slot-text">
+                    <p  class="p-slot">Produtos e Equipamentos</p>
+                </section>
+            </section>
+        </section>
+        <br>
     </section>
 
     <main>
-        <h2>Nossos Serviços</h2>
+        <h2>Orçamento</h2>
         <hr>
 
-        <section id="nossos-servicos">
+        <section id="orcamento">
             <aside>
                 <ul>
-                    <li><button id="btn-aside-residencial" class="btn-aside background-color-black font-color-white">Residencial</button></li>
-                    <li><button id="btn-aside-automotivo"class="btn-aside background-color-black font-color-white">Automotivo</button></li>
-                    <li><button id="btn-aside-produtos" class="btn-aside background-color-black font-color-white">Produtos</button></li>
+                    <li><button id="btn-aside-residencial" class="btn-aside">Residencial</button></li>
+                    <li><button id="btn-aside-automotivo"class="btn-aside ">Automotivo</button></li>
+                    <li><button id="btn-aside-produtos" class="btn-aside">Produtos</button></li>
                 </ul>
             </aside>
 
@@ -51,31 +80,59 @@
         </section> 
     </main>
 
-    <section id="sobre-nos">
-        <h2 class="font-color-orange">Sobre Nós</h2>
+    <section id="onde-estamos">
+        <h2 class="font-color-orange">Onde Estamos</h2>
         <hr>
-        <article>
+        <article id="localizacao">
             <section>
-                <p>paragrafo falando sobre a empresa.</p>
+                <p>Nossa empresa é localizada no centro de Pelotas, RS, não se limitando ao município, mas também prestando serviços de qualidade para toda região Sul do estado.</p>
+                <p>Precisou de nossos serviços? Não hesite em nos visitar!</p>
+                <p>Para obter a melhor rota até nós:</p>
+                <br>
+                <a href="https://www.google.com/maps/dir//Chaveiro+Gelson+-+R.+Maj.+C%C3%ADcero+de+G%C3%B3es+Monteiro,+449+-+Centro,+Pelotas+-+RS,+96015-190,+Brasil/@-31.763452,-52.342932,17z/data=!4m8!4m7!1m0!1m5!1m1!1s0x9511b599220fa2f7:0xce70dad3ee4f5b6e!2m2!1d-52.3430919!2d-31.763332?hl=pt-BR&entry=ttu" target="_blank" id="btn-localizacao">Clique Aqui!</a>
+                <br>
+                <p>Ou ligue diretamente para nós <a href="tel:(53)999826091" id="ligue">clicando aqui.</a></p>
+                <p>Atendimento de Domingo a Domingo, incluindo feriados, das 09h00 às 22h00.</p>
             </section>
-            <figure>
+            <section>
+                <iframe width="95%" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=Chaveiro%20Gelson%20Pelotas&t=&z=17&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="5" marginwidth="0"></iframe>
+            </section>
+        </article>
+    </section>
+
+    <section id="sobre-nos">
+        <h2>Sobre Nós</h2>
+        <hr>
+        <article id="sobre-empresa">
+            <section id="sobre-texto">
+                <p id="intro">Somos uma referência confiável em serviços de chaveiro na cidade de Pelotas, Rio Grande do Sul, há mais de três décadas. Como uma empresa familiar, cultivamos nossos alicerces em três pilares fundamentais: Compromisso, Excelência e Tradição com Inovação, proporcionando serviços de alta qualidade com integridade e um compromisso regional sólido.</p>
+                <br>
+                <h3>Compromisso</h3>
+                <p>Como parte integrante da comunidade de Pelotas e região, a Chaveiro Gelson tem o compromisso de servir nossos vizinhos com integridade e profissionalismo. Nossa presença é mais do que apenas empresarial; é uma contribuição para a segurança e conveniência de nossa comunidade. Estamos aqui para moldar experiências positivas, fornecendo serviços de chaveiro confiáveis, respaldados por décadas de experiência e um compromisso inabalável com a satisfação do cliente.</p>
+                <h3>Excelência</h3>
+                <p>Para nós, a excelência é mais do que um padrão - é a nossa tradição. Estamos dedicados a oferecer serviços de alta qualidade, mantendo-nos atualizados com as últimas tecnologias e técnicas do setor, fornecendo serviços alinhados com as demandas específicas de cada cliente.</p>
+                <h3>Tradição com Inovação</h3>
+                <p>Com 30 anos de experiência, somos uma empresa sólida na cidade e na metade sul do estado. Nossa história é marcada por um compromisso contínuo com a satisfação do cliente e a inovação constante. O Chaveiro Gelson orgulha-se de ser uma empresa que cresceu e evoluiu com as necessidades em constante mudança de nossos clientes, mantendo-se sempre à frente no que diz respeito a equipamentos e técnicas atualizadas.</p>
+            </section>
+            <figure id="sobre-figura">
+                <img
+                src="./data/assets/img/oficina.png"
+                alt="Oficina de Chaveiro"
+                id="oficina-chaveiro"
+                >
             </figure>
         </article>
     </section>
 
-    <section id="onde-estamos">
-        <h2 class="font-color-orange">Onde Estamos</h2>
-        <hr>
-    </section>
-
     <section id="depoimentos">
-        <h2 class="font-color-orange">Depoimentos</h2>
+        <h2>Depoimentos</h2>
         <hr>
+
     </section>
 
     <footer>
-        <p>Chaveiro Gelson. Todos os direitos reservados, 2023.</p>
-        <p>Desenvolvido por <a href="#">TesseratoTech</a>.</p>
+        <p>Chaveiro Gelson. Todos os direitos reservados, 2024.</p>
+        <p>Desenvolvido por <a href="https://wa.me/+5553984688644" target="_blank">TesseratoTech</a>.</p>
     </footer>
 
     <script src="index.js" type="module" defer></script>
