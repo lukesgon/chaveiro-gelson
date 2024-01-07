@@ -38,8 +38,11 @@ window.addEventListener('load', () => {
         slot.addEventListener('mouseover', () => {
             clearTimeout(timer); // Limpar temporizador quando o mouse está sobre um slot
             activateSlot(slot);
-            startTimer(); // Reiniciar o temporizador ao passar por cima do slot
         });
+        
+        slot.addEventListener('mouseout', () => {
+            startTimer();
+        })
     });
 
     // Iniciar o temporizador no carregamento da página
