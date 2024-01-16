@@ -1,5 +1,5 @@
-const servicesSection = document.getElementById
-('services');
+const servicesSection = document.getElementById('services');
+const descricaoOrcamento = document.getElementById('descricao-orcamento');
 
 class Article {
     constructor(title, imgSrc) {
@@ -173,7 +173,7 @@ function enderecoLoad() {
 }
 
 function residencialLoad() {
-    const chaveComum = new Article(`Comum`, `./data/assets/img/367460405_6590736087687768_8940837777860267499_n.jpg`);
+    const cadeadi = new Article(`Comum`, `./data/assets/img/367460405_6590736087687768_8940837777860267499_n.jpg`);
 
     const chaveTetra = new Article(`Tetra`, `./data/assets/img/367460405_6590736087687768_8940837777860267499_n.jpg`);
     
