@@ -13,6 +13,7 @@ window.addEventListener('load', () => {
     }
 
     function startTimer() {
+        clearTimeout(timer);
         timer = setTimeout(() => {
             // Trocar para o próximo slot quando o temporizador expirar
             const activeSlot = document.querySelector('.slot.active');
@@ -46,5 +47,5 @@ window.addEventListener('load', () => {
     });
 
     // Iniciar o temporizador no carregamento da página
-    startTimer();
+    setTimeout(()=> {startTimer();}, 3000);
 });
