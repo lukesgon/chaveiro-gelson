@@ -272,6 +272,40 @@ main > p {
     color: var(--grey-color);
 }
 
+.quantidade-form > button {
+    font-size: 1.2rem;
+    padding: 0.3rem;
+    background-color: var(--grey-color);
+    font-weight: bolder;
+    outline: none;
+    border: none;
+    border-radius: 0.3rem;
+    transition: var(--transtime);
+}
+
+.quantidade-form > button:hover {
+    color: var(--white-color);
+    cursor: pointer;
+    background-color: var(--orange-color);
+}
+
+#quantidade {
+    color: var(--black-color);
+    background-color: var(--grey-color);
+    font-weight: bold;
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.3rem;
+    transition: var(--transtime);
+}
+
+#quantidade:focus {
+    color: var(--white-color);
+    background-color: var(--orange-color);
+    outline: none;
+    border: none;
+}
+
 label {
     color: var(--grey-color);
     margin-bottom: 0.3rem;
@@ -291,7 +325,7 @@ label {
     padding-right: 0.1rem;
 }
 
-.form > button, .quantidade-form > button {
+.form > button {
     font-size: 1.2rem;
     width: 6rem;
     height: 1.5rem;
@@ -418,6 +452,112 @@ label {
     align-items: center;
 }
 
+#resumo-artigo {
+    color: var(--grey-color);
+    background-color: var(--black-color);
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+#resumo-titulo {
+    color: var(--orange-color);
+    font-size: 1.8rem;
+    line-height: 3rem;
+    margin: 1.5rem 1rem 0 1rem;
+}
+
+.lista-resumo {
+    font-size: 1.2rem;
+    display: flex;
+    height: 60%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1rem;
+}
+
+.lista-resumo > li{
+    display: flex;
+    color: var(--grey-color);
+    align-items: center;
+    list-style: none;
+    width: 100%;
+}
+
+
+.artigo-confirmar {
+    max-width: 20%;
+    color: var(--grey-color);
+    background-color: var(--black-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+.artigo-confirmar > p, .artigo-confirmar > figure > figcaption {
+    text-align: center;
+    margin: 0.7rem;
+    color: var(--grey-color);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.artigo-confirmar > figure {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn-confirmar {
+    cursor: pointer;
+    background-color: var(--grey-color);
+    color: var(--black-color);
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition: var(--transtime);
+}
+
+#btn-confirmar:hover {
+    transform: scale(1.05);
+    background-color: var(--orange-color);
+    color: var(--white-color);
+}
+
+#qr-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10rem;
+    padding: 0.5rem;
+    margin: 0 auto;
+    border-radius: 1rem;
+}
+
+li > strong {
+    display: flex;
+    color: var(--grey-color);
+    align-items: center;
+    list-style: none;
+
+}
+
+li > span {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-left: auto;
+    color: var(--grey-color);
+}
+
 .svg {
     fill: white;
 }
@@ -442,10 +582,6 @@ label {
     fill: var(--orange-color);
     transform: scale(1.05);
     cursor: pointer;
-}
-
-#qr-code {
-    width: 25%;
 }
 
 #sobre-nos > article {

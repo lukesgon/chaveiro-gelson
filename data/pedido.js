@@ -220,6 +220,7 @@ class Artigo {
         articleFormInput.name = `quantidade`;
         articleFormInput.id = `quantidade`;
         articleFormInput.value = 1;
+        articleFormInput.setAttribute('min', '1');
         
         const btnSubmit = document.createElement('button');
         btnSubmit.id = `${title}-btn`;
@@ -312,7 +313,6 @@ function automotivoLoad() {
     servicesSection.appendChild(elementAnoModelo);
 };
 
-
 function servicoLoad() {
     previousArticle = 'servicoSection'
     const servicoAbertura = new Artigo('Abertura');
@@ -375,10 +375,10 @@ function chavesLoad() {
     elementChaveGorge.addEventListener('click', servicoLoad);
     elementChaveMultiponto.addEventListener('click', servicoLoad);
     
-    elementChaveComum.onclick = () => ordemServico[4] = 'chave comum';
-    elementChaveTetra.onclick = () => ordemServico[4] = 'chave tetra';
-    elementChaveGorge.onclick = () => ordemServico[4] = 'chave gorge';
-    elementChaveMultiponto.onclick = () => ordemServico[4] = 'chave multiponto';
+    elementChaveComum.onclick = () => ordemServico[4] = 'comum';
+    elementChaveTetra.onclick = () => ordemServico[4] = 'tetra';
+    elementChaveGorge.onclick = () => ordemServico[4] = 'gorge';
+    elementChaveMultiponto.onclick = () => ordemServico[4] = 'multiponto';
     
     console.log(ordemServico);
 };
@@ -434,67 +434,154 @@ function quantidadeServicoLoad() {
     });
 };
 
+function confirmLoad(content) {
+    let contentMsg = content;
+
+    const article = document.createElement('article');
+    article.classList.add('artigo-confirmar');
+
+    const paragraph = document.createElement('p');
+    paragraph.textContent = `Confira o resumo do orçamento. Se tudo estiver correto, escolha uma das opções:`;
+
+    const btnConfirm = document.createElement('a');
+    btnConfirm.href = 'https://wa.me/5553984688644?text='+contentMsg;
+    btnConfirm.target = '_blank'
+    btnConfirm.textContent = "Solicitar Orçamento";
+    btnConfirm.id = 'btn-confirmar';
+
+    contentMsg = contentMsg.replaceAll('%20', '%2B');
+    console.log(contentMsg)
+    
+    const figure = document.createElement('figure');
+    const qrCode = document.createElement('img');
+    qrCode.src = 'https://api.invertexto.com/v1/qrcode?token=6252%7C92UyGU63niEdJzKAh8hOKeXn3kZspWME&text=wa.me%2F5553984688644%3Ftext%3D'+contentMsg;
+    qrCode.id = 'qr-img';
+
+    const figCaption = document.createElement('figcaption');
+    figCaption.textContent = 'Ou escaneie o qrCode para solicitar seu orçamento diretamente em seu smartphone.'
+
+    figure.appendChild(qrCode);
+    figure.appendChild(figCaption);
+    article.appendChild(paragraph);
+    article.appendChild(btnConfirm);
+    article.appendChild(figure);
+    servicesSection.appendChild(article);
+    console.log(qrCode.src)
+    console.log(contentMsg)
+    console.log(ordemServico)
+}
+
+function localLoad() {
+    const domicilio = new Artigo ('Domiciliar');
+    const domicilioElement = domicilio.makeTextArticle();
+    
+    const balcao = new Artigo('Oficina');
+    const balcaoElement = balcao.makeTextArticle();
+    
+    servicesSection.innerHTML = '';
+    servicesSection.appendChild(domicilioElement);
+    servicesSection.appendChild(balcaoElement);
+    
+    balcaoElement.onclick = () => {ordemServico[8] = 'oficina'};
+    domicilioElement.onclick = () => {ordemServico[8] = 'domicílio'};
+    
+    balcaoElement.addEventListener('click', ()=> {
+        let orcamentoContent = resumoLoad();
+        confirmLoad();
+
+        console.log(orcamentoContent);
+    });
+
+    domicilioElement.addEventListener('click', ()=> {
+        
+        let orcamentoContent = resumoLoad();
+        confirmLoad(orcamentoContent);
+        
+    });
+
+    balcaoElement.addEventListener('click', () => {
+
+        let orcamentoContent = resumoLoad();
+        confirmLoad(orcamentoContent);
+    });
+};
+
 function resumoLoad() {
+    let orcamentoContent = `Olá,%20preciso%20de%20orçamento%20para%20o%20seguinte%20serviço%0A%0A`;
+
     const artigo = document.createElement('article');
     artigo.id = 'resumo-artigo';
 
     const title = document.createElement('h3');
     title.id = 'resumo-titulo';
-    title.innerText = 'Resumo do Orçamento: ';
+    title.innerText = 'Resumo do Orçamento';
 
     artigo.appendChild(title);
     
     const ulLista = document.createElement('ul');
     ulLista.classList.add('lista-resumo');
 
-    artigo.appendChild(ulLista);
-
+    
     const liCategoria = document.createElement('li');
-    liCategoria.innerText = `Categoria: ${ordemServico[0]}`;
-
+    liCategoria.innerHTML = `<strong>Categoria:</strong><span>${ordemServico[0]}</span>`;
     ulLista.appendChild(liCategoria);
-
+    orcamentoContent += `Categoria%20${ordemServico[0]}%0A`;
+    
     if (ordemServico[0] == 'residencial') {
         const liObjeto = document.createElement('li');
-        liObjeto.innerText = `Fechamento: ${ordemServico[1]}`;
-
+        liObjeto.innerHTML = `<strong>Fechadura:</strong><span>${ordemServico[1]}</span>`;
         ulLista.appendChild(liObjeto);
+        orcamentoContent += `Fechadura%20de%20${ordemServico[1]}%0A`;
 
         const liChave = document.createElement('li');
-        liChave.innerText = `Chave: ${ordemServico[4]}`;
-
+        liChave.innerHTML = `<strong>Chave:</strong><span>${ordemServico[4]}</span>`;
         ulLista.appendChild(liChave);
+        orcamentoContent += `Chave%20tipo%20${ordemServico[4]}%0A`;
+    };
+    
+    if (ordemServico[0] == 'automotivo') {
+        const liCarro = document.createElement('li');
+        liCarro.innerHTML =`<strong>Veículo:</strong><span>${ordemServico[2]}</span>`;
+        ulLista.appendChild(liCarro);
+        orcamentoContent += `Veículo%20${ordemServico[2]}%0A`;
+    };
+    
+    if (ordemServico[0] == 'equipamento') {
+        const liEquipamento = document.createElement('li');
+        liEquipamento.innerHTML =`<strong>Equipamento:</strong><span>${ordemServico[3]}</span>`;
+        ulLista.appendChild(liEquipamento);
+        orcamentoContent += `Equipamento%20{ordemServico[3]}%0A`;
     };
     
     const liServico = document.createElement('li');
-    liServico.innerHTML = `Serviço: ${ordemServico[5]}`;
-
+    liServico.innerHTML = `<strong>Serviço:</strong><span>${ordemServico[5]}</span>`;
     ulLista.appendChild(liServico);
-
+    orcamentoContent += `Serviço%20${ordemServico[5]}%0A`;
+    
     if (ordemServico[5] == 'nova chave') {
         const liPerdidaCopia = document.createElement('li');
-        liPerdidaCopia.innerText = `Situação: ${ordemServico[6]}`;
-
+        liPerdidaCopia.innerHTML =`<strong>Situação:</strong><span>${ordemServico[6]}</span>`;
         ulLista.appendChild(liPerdidaCopia);
+        orcamentoContent += `Tipo%20${ordemServico[6]}%0A`;
     };
-
-    servicesSection = '';   
-};
-
-function localLoad() {
-    const domicilio = new Artigo ('Domiciliar');
-    const domicilioElement = domicilio.makeTextArticle();
     
-    const balcao = new Artigo('Balcão');
-    const balcaoElement = balcao.makeTextArticle();
+    const liQuantidade = document.createElement('li');
+    liQuantidade.innerHTML =`<strong>Quantidade:</strong><span>${ordemServico[7]}</span>`;
+    ulLista.appendChild(liQuantidade);
+    orcamentoContent += `Quantidade%20${ordemServico[7]}%0A`;
+
+    const liLocal = document.createElement('li');
+    liLocal.innerHTML = `<strong>Local:</strong><span>${ordemServico[8]}</span>`;
+    ulLista.appendChild(liLocal);
+    orcamentoContent += `Local%20${ordemServico[8]}`;
     
+    artigo.appendChild(ulLista);
+
     servicesSection.innerHTML = '';
-    servicesSection.appendChild(domicilioElement);
-    servicesSection.appendChild(balcaoElement);
+    servicesSection.appendChild(artigo);
 
-    balcaoElement.addEventListener('click', resumoLoad());
-    domicilioElement.addEventListener('click', encerecoLoad());
+    console.log(orcamentoContent);
+    return orcamentoContent;
 };
-
 
 window.onload = categoriaLoad;
