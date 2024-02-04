@@ -19,27 +19,53 @@ function voltarSecao() {
     switch (previousArticle) {
         case 'residencialSection':
             categoriaLoad();
-            break
+            break;
         
         case 'automotivoSection':
             categoriaLoad();
-            break
+            break;
 
         case 'chavesSection':
             residencialLoad();
-            break
+            break;
 
         case 'servicoSection':
-            chavesLoad();
-            break
+            if (ordemServico[0] === 'residencial') {
+                chavesLoad();
+            };
+
+            if (ordemServico[0] === 'automotivo') {
+                automotivoLoad();
+            }
+
+            break;
 
         case 'tipoChaveSection':
             servicoLoad();
-            break
+            break;
         
         case 'quantidadeServicoLoad':
             servicoLoad();
-            break
+            break;
+
+        case 'local':
+            quantidadeServicoLoad();
+            break;
+        
+        case 'endereco':
+            localLoad();
+            break;
+
+        case 'resumo':
+            if (ordemServico[8] === 'oficina') {
+                localLoad();
+            };
+
+            if (ordemServico[8] === 'domicílio') {
+                enderecoLoad();
+            };
+            
+            break;
     };
 };
 
@@ -181,6 +207,7 @@ class Artigo {
         articleFormInput.type = `text`;
         articleFormInput.name = `veiculo`;
         articleFormInput.id = `veiculo`;
+        articleFormInput.setAttribute('placeholder', 'Ex: Volkswagen Gol, 2012')
         
         const btnSubmit = document.createElement('button');
         btnSubmit.id = `${title}-btn`
@@ -268,7 +295,7 @@ function categoriaLoad() {
 
 function residencialLoad() {
     previousArticle = 'residencialSection';
-    tituloOrcamento.innerText = `Por favor, escolha qual fechamento se encaixa no seu tipo de serviço:`;
+        tituloOrcamento.innerText = `Por favor, escolha qual fechamento se encaixa no seu tipo de serviço:`;
     menuOrcamento();
     const porta = new Artigo(`Porta`, `./data/assets/img/porta.png`);
     const elementPorta = porta.makeImgArticle();
@@ -303,52 +330,7 @@ function residencialLoad() {
 
 };
 
-function automotivoLoad() {
-    previousArticle = 'automotivoSection';
-    menuOrcamento();
-    const anoModelo = new Artigo(`veiculo`);
-    const elementAnoModelo = anoModelo.makeTextFormArticle();
-    
-    servicesSection.innerHTML = ``;
-    servicesSection.appendChild(elementAnoModelo);
-};
-
-function servicoLoad() {
-    previousArticle = 'servicoSection'
-    const servicoAbertura = new Artigo('Abertura');
-    const elementServicoAbertura = servicoAbertura.makeTextArticle();
-    
-    const servicoNovaChave = new Artigo('Nova Chave');
-    const elementServicoNovaChave = servicoNovaChave.makeTextArticle();
-    
-    const servicoConserto = new Artigo('Conserto');
-    const elementServicoConserto = servicoConserto.makeTextArticle();
-    
-    const servicoTrocaSegredo = new Artigo('Troca de Segredo');
-    const elementServicoTrocaSegredo = servicoTrocaSegredo.makeTextArticle();
-    
-    servicesSection.innerHTML = '';
-    servicesSection.appendChild(elementServicoAbertura);
-    servicesSection.appendChild(elementServicoNovaChave);
-    servicesSection.appendChild(elementServicoConserto);
-    servicesSection.appendChild(elementServicoTrocaSegredo);
-    
-    elementServicoAbertura.onclick = () => ordemServico[5] = 'abertura';
-    elementServicoNovaChave.onclick = () => ordemServico[5] = 'nova chave';
-    elementServicoConserto.onclick = () => ordemServico[5] = 'conserto';
-    elementServicoTrocaSegredo.onclick = () => ordemServico[5] = 'troca de segredo';
-
-    elementServicoAbertura.addEventListener('click', quantidadeServicoLoad);
-    elementServicoNovaChave.addEventListener('click', tipoChaveLoad);
-    elementServicoConserto.addEventListener('click', quantidadeServicoLoad);
-    elementServicoTrocaSegredo.addEventListener('click', quantidadeServicoLoad);
-    
-    
-    console.log(ordemServico);
-};
-
 function chavesLoad() {
-    
     previousArticle = 'chavesSection'
     tituloOrcamento.innerText = `Por favor, indique com qual tipo a chave deste serviço se parece:`;
     
@@ -383,6 +365,69 @@ function chavesLoad() {
     console.log(ordemServico);
 };
 
+function automotivoLoad() {
+    previousArticle = 'automotivoSection';
+
+    tituloOrcamento.innerText = `Por favor, informe corretamente os dados do seu veículo.`;
+
+    menuOrcamento();
+
+    const anoModelo = new Artigo(`veiculo`);
+    const elementAnoModelo = anoModelo.makeTextFormArticle();
+    
+    servicesSection.innerHTML = ``;
+    servicesSection.appendChild(elementAnoModelo);
+
+    const veiculoBtn = document.getElementById('veiculo-btn');
+
+    veiculoBtn.addEventListener("click", (event)=> {
+        event.preventDefault();
+
+        const marcaVeiculo = String(document.getElementById('veiculo').value);
+
+        if (!marcaVeiculo) {
+            return alert('Por favor, insira os dados do seu veículo.');
+        } else {
+            ordemServico[2] = marcaVeiculo;
+            servicoLoad();
+        };
+    });
+};
+
+function servicoLoad() {
+    previousArticle = 'servicoSection'
+    tituloOrcamento.innerText = `Qual o tipo de serviço a ser prestado?`;
+    const servicoAbertura = new Artigo('Abertura');
+    const elementServicoAbertura = servicoAbertura.makeTextArticle();
+    
+    const servicoNovaChave = new Artigo('Nova Chave');
+    const elementServicoNovaChave = servicoNovaChave.makeTextArticle();
+    
+    const servicoConserto = new Artigo('Conserto');
+    const elementServicoConserto = servicoConserto.makeTextArticle();
+    
+    const servicoTrocaSegredo = new Artigo('Troca de Segredo');
+    const elementServicoTrocaSegredo = servicoTrocaSegredo.makeTextArticle();
+    
+    servicesSection.innerHTML = '';
+    servicesSection.appendChild(elementServicoAbertura);
+    servicesSection.appendChild(elementServicoNovaChave);
+    servicesSection.appendChild(elementServicoConserto);
+    servicesSection.appendChild(elementServicoTrocaSegredo);
+    
+    elementServicoAbertura.onclick = () => ordemServico[5] = 'abertura';
+    elementServicoNovaChave.onclick = () => ordemServico[5] = 'nova chave';
+    elementServicoConserto.onclick = () => ordemServico[5] = 'conserto';
+    elementServicoTrocaSegredo.onclick = () => ordemServico[5] = 'troca de segredo';
+
+    elementServicoAbertura.addEventListener('click', quantidadeServicoLoad);
+    elementServicoNovaChave.addEventListener('click', tipoChaveLoad);
+    elementServicoConserto.addEventListener('click', quantidadeServicoLoad);
+    elementServicoTrocaSegredo.addEventListener('click', quantidadeServicoLoad);
+    
+    console.log(ordemServico);
+};
+
 function tipoChaveLoad() {
     previousArticle = 'tipoChaveSection';
     tituloOrcamento.innerText = `Qual a sua situação? Todas as chaves foram perdidas, ou é nessária apenas a cópia de uma original?`;
@@ -406,8 +451,8 @@ function tipoChaveLoad() {
     console.log(ordemServico);
 };
 
-
 function submeterValor(valor) {
+    tituloOrcamento.innerText = 'Por favor, informe o local onde o serviço será realizado.'
     ordemServico[7] = valor;
     
     localLoad();
@@ -434,44 +479,9 @@ function quantidadeServicoLoad() {
     });
 };
 
-function confirmLoad(content) {
-    let contentMsg = content;
-
-    const article = document.createElement('article');
-    article.classList.add('artigo-confirmar');
-
-    const paragraph = document.createElement('p');
-    paragraph.textContent = `Confira o resumo do orçamento. Se tudo estiver correto, escolha uma das opções:`;
-
-    const btnConfirm = document.createElement('a');
-    btnConfirm.href = 'https://wa.me/5553984688644?text='+contentMsg;
-    btnConfirm.target = '_blank'
-    btnConfirm.textContent = "Solicitar Orçamento";
-    btnConfirm.id = 'btn-confirmar';
-
-    contentMsg = contentMsg.replaceAll('%20', '%2B');
-    console.log(contentMsg)
-    
-    const figure = document.createElement('figure');
-    const qrCode = document.createElement('img');
-    qrCode.src = 'https://api.invertexto.com/v1/qrcode?token=6252%7C92UyGU63niEdJzKAh8hOKeXn3kZspWME&text=wa.me%2F5553984688644%3Ftext%3D'+contentMsg;
-    qrCode.id = 'qr-img';
-
-    const figCaption = document.createElement('figcaption');
-    figCaption.textContent = 'Ou escaneie o qrCode para solicitar seu orçamento diretamente em seu smartphone.'
-
-    figure.appendChild(qrCode);
-    figure.appendChild(figCaption);
-    article.appendChild(paragraph);
-    article.appendChild(btnConfirm);
-    article.appendChild(figure);
-    servicesSection.appendChild(article);
-    console.log(qrCode.src)
-    console.log(contentMsg)
-    console.log(ordemServico)
-}
-
 function localLoad() {
+    previousArticle = 'local';
+
     const domicilio = new Artigo ('Domiciliar');
     const domicilioElement = domicilio.makeTextArticle();
     
@@ -494,8 +504,8 @@ function localLoad() {
 
     domicilioElement.addEventListener('click', ()=> {
         
-        let orcamentoContent = resumoLoad();
-        confirmLoad(orcamentoContent);
+        servicesSection.innerHTML = '';
+        enderecoLoad();
         
     });
 
@@ -506,7 +516,66 @@ function localLoad() {
     });
 };
 
+function enderecoLoad() {
+    previousArticle = 'endereco';
+
+    tituloOrcamento.innerText = 'Por favor, insira o endereço do atendimento, contendo nome da rua e número do imóvel para referência.'
+
+    const article = document.createElement('artcile');
+    article.id = 'artigo-endereco';
+    
+    const h3 = document.createElement('h3');
+    h3.textContent = "Endereço";
+    h3.classList.add('artigo-title');
+    article.appendChild(h3);
+
+    const form = document.createElement('form');
+    form.id = 'form-endereco';
+
+    const label = document.createElement('label');
+    label.innerText = 'Endereço do serviço:';
+    label.htmlFor = 'endereco';
+
+    const input = document.createElement('input');
+    input.placeholder = 'Endereço...';
+    input.type = 'text';
+    input.name = 'endereco';
+    input.id = 'endereco';
+    label.appendChild(input);
+    
+    form.appendChild(label);
+
+    const btnEndereco = document.createElement('button');
+    btnEndereco.id = 'btn-endereco';
+    btnEndereco.type = 'submit';
+    btnEndereco.innerText = 'Confirmar';
+
+    form.appendChild(btnEndereco);
+    
+    article.appendChild(form);
+    
+    servicesSection.appendChild(article);
+
+    btnEndereco.addEventListener('click', (event)=> {
+        event.preventDefault();
+
+        ordemServico[9] = input.value;
+
+        if(!ordemServico[9]){
+            alert("Preencha o endereço!");
+        }else {
+        servicesSection.innerHTML = '';
+        let orcamentoContent = resumoLoad();
+        confirmLoad(orcamentoContent);
+        };
+    });
+};
+
 function resumoLoad() {
+        previousArticle = 'resumo';
+
+    tituloOrcamento.innerText = 'Confira o resumo de informações e siga as instruções.'
+
     let orcamentoContent = `Olá,%20preciso%20de%20orçamento%20para%20o%20seguinte%20serviço%0A%0A`;
 
     const artigo = document.createElement('article');
@@ -550,7 +619,7 @@ function resumoLoad() {
         const liEquipamento = document.createElement('li');
         liEquipamento.innerHTML =`<strong>Equipamento:</strong><span>${ordemServico[3]}</span>`;
         ulLista.appendChild(liEquipamento);
-        orcamentoContent += `Equipamento%20{ordemServico[3]}%0A`;
+        orcamentoContent += `Equipamento%20${ordemServico[3]}%0A`;
     };
     
     const liServico = document.createElement('li');
@@ -573,7 +642,14 @@ function resumoLoad() {
     const liLocal = document.createElement('li');
     liLocal.innerHTML = `<strong>Local:</strong><span>${ordemServico[8]}</span>`;
     ulLista.appendChild(liLocal);
-    orcamentoContent += `Local%20${ordemServico[8]}`;
+    orcamentoContent += `Local%20${ordemServico[8]}%0A`;
+
+    if (ordemServico[8] === 'domicílio') {
+        const liEndereco = document.createElement('li');
+        liEndereco.innerHTML = `<strong>Endereço:</strong><span>${ordemServico[9]}</span>`;
+        ulLista.appendChild(liEndereco);
+        orcamentoContent += `Endereço%20${ordemServico[9]}`;
+    }
     
     artigo.appendChild(ulLista);
 
@@ -582,6 +658,45 @@ function resumoLoad() {
 
     console.log(orcamentoContent);
     return orcamentoContent;
+};
+
+function confirmLoad(content) {
+    let contentMsg = content;
+
+    contentMsg = contentMsg.replaceAll(' ', '%20');
+
+    const article = document.createElement('article');
+    article.classList.add('artigo-confirmar');
+
+    const paragraph = document.createElement('p');
+    paragraph.textContent = `Confira o resumo do orçamento. Se tudo estiver correto, escolha uma das opções:`;
+
+    const btnConfirm = document.createElement('a');
+    btnConfirm.href = 'https://wa.me/5553984688644?text='+contentMsg;
+    btnConfirm.target = '_blank'
+    btnConfirm.textContent = "Solicitar Orçamento";
+    btnConfirm.id = 'btn-confirmar';
+    contentMsg = contentMsg.replaceAll('%20', '%2B');
+    console.log(contentMsg)
+    
+    const figure = document.createElement('figure');
+    const qrCode = document.createElement('img');
+
+    qrCode.src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wa.me/5553984688644?text='+contentMsg;
+    qrCode.id = 'qr-img';
+
+    const figCaption = document.createElement('figcaption');
+    figCaption.textContent = 'Ou escaneie o qrCode para solicitar seu orçamento diretamente em seu smartphone.'
+
+    figure.appendChild(qrCode);
+    figure.appendChild(figCaption);
+    article.appendChild(paragraph);
+    article.appendChild(btnConfirm);
+    article.appendChild(figure);
+    servicesSection.appendChild(article);
+    console.log(qrCode.src)
+    console.log(contentMsg)
+    console.log(ordemServico)
 };
 
 window.onload = categoriaLoad;
