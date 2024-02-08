@@ -15,6 +15,10 @@ const tituloOrcamento = document.createElement(`h3`);
 descricaoOrcamento.appendChild(tituloOrcamento);
 
 function voltarSecao() {
+    servicesSection.style.flexDirection = '';
+    servicesSection.style.boxSizing = '';
+    servicesSection.style.overflow = 'auto';
+
     servicesSection.innerHTML = ``;
     switch (previousArticle) {
         case 'residencialSection':
@@ -70,6 +74,10 @@ function voltarSecao() {
 };
 
 function retornarBtn() {
+    servicesSection.style.flexDirection = '';
+    servicesSection.style.boxSizing = '';
+    servicesSection.style.overflow = 'auto';
+
     const btnRetornar = document.getElementById(`btn-retornar`);
     retornar = btnRetornar.addEventListener('click', voltarSecao);
 };
@@ -100,7 +108,7 @@ function menuOrcamento() {
     btnRetornar.id = `btn-retornar`;
 
     const btnCancelar = document.createElement(`button`);
-    btnCancelar.innerText = `Cancelar`;
+    btnCancelar.innerText = `Finalizar`;
     btnCancelar.id = `btn-cancelar`;
 
     cancelarRetornar.innerHTML = '';
@@ -267,6 +275,8 @@ class Artigo {
 };
 
 function categoriaLoad() {
+    ordemServico.fill(null);
+
     tituloOrcamento.innerText = `Para solicitar um orçamento, por favor, escolha uma das categorias de serviço abaixo:`;
     cancelarRetornar.innerHTML = ``;
     
@@ -276,13 +286,13 @@ function categoriaLoad() {
     const automotivo = new Artigo(`Automotivo`, null, './data/assets/img/car.png');
     const elementAutomotivo = automotivo.makeImgArticle();
 
-    const equipamentos = new Artigo(`Equipamentos`, null, './data/assets/img/equip.png');
-    const elementEquipamentos = equipamentos.makeImgArticle();
+    // const equipamentos = new Artigo(`Equipamentos`, null, './data/assets/img/equip.png');
+    // const elementEquipamentos = equipamentos.makeImgArticle();
 
     servicesSection.innerHTML = ``;
     servicesSection.appendChild(elementResidencial);
     servicesSection.appendChild(elementAutomotivo);
-    servicesSection.appendChild(elementEquipamentos);
+    // servicesSection.appendChild(elementEquipamentos);
 
     elementResidencial.addEventListener('click', residencialLoad);
     elementAutomotivo.addEventListener('click', automotivoLoad);
@@ -572,7 +582,9 @@ function enderecoLoad() {
 };
 
 function resumoLoad() {
-        previousArticle = 'resumo';
+    servicesSection.style.flexDirection = 'column';
+
+    previousArticle = 'resumo';
 
     tituloOrcamento.innerText = 'Confira o resumo de informações e siga as instruções.'
 
@@ -672,7 +684,7 @@ function confirmLoad(content) {
     paragraph.textContent = `Confira o resumo do orçamento. Se tudo estiver correto, escolha uma das opções:`;
 
     const btnConfirm = document.createElement('a');
-    btnConfirm.href = 'https://wa.me/5553984688644?text='+contentMsg;
+    btnConfirm.href = 'https://wa.me/5553999826091?text='+contentMsg;
     btnConfirm.target = '_blank'
     btnConfirm.textContent = "Solicitar Orçamento";
     btnConfirm.id = 'btn-confirmar';
@@ -682,7 +694,7 @@ function confirmLoad(content) {
     const figure = document.createElement('figure');
     const qrCode = document.createElement('img');
 
-    qrCode.src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wa.me/5553984688644?text='+contentMsg;
+    qrCode.src = 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://wa.me/5553999826091?text='+contentMsg;
     qrCode.id = 'qr-img';
 
     const figCaption = document.createElement('figcaption');
@@ -694,9 +706,15 @@ function confirmLoad(content) {
     article.appendChild(btnConfirm);
     article.appendChild(figure);
     servicesSection.appendChild(article);
-    console.log(qrCode.src)
-    console.log(contentMsg)
-    console.log(ordemServico)
+
+    btnConfirm.addEventListener('click', () => {
+        servicesSection.innerHTML = ''
+        servicesSection.style.flexDirection = '';
+        servicesSection.style.boxSizing = '';
+        servicesSection.style.overflow = 'auto';
+        
+        categoriaLoad();
+    })
 };
 
 window.onload = categoriaLoad;
