@@ -49,11 +49,11 @@ class Article {
 };
 
 function categoriaLoad() {
-    const articleResidencial = new Article(`Residencial`, `./data/assets/img/35526963_1678028438982294_8817581031352696832_n.jpg`);
+    const articleResidencial = new Article(`Residencial`, `../data/assets/img/35526963_1678028438982294_8817581031352696832_n.jpg`);
 
-    const articleAutomotivo = new Article(`Automotivo`, `./data/assets/img/35526963_1678028438982294_8817581031352696832_n.jpg`);
+    const articleAutomotivo = new Article(`Automotivo`, `../data/assets/img/35526963_1678028438982294_8817581031352696832_n.jpg`);
 
-    const articleEquipamento = new Article(`Equipamentos`, `./data/assets/img/35526963_1678028438982294_8817581031352696832_n.jpg`);
+    const articleEquipamento = new Article(`Equipamentos`, `../data/assets/img/35526963_1678028438982294_8817581031352696832_n.jpg`);
 
     const servicesSection = document.getElementById(`services`);
     
@@ -91,13 +91,13 @@ function categoriaLoad() {
 };
 
 function serviceLoad() {
-    const articleAbertura = new Article(`Aberturas`, `./data/assets/img/35526963_1678028438982294_8817581031352696832_n.jpg`);
+    const articleAbertura = new Article(`Aberturas`, `../data/assets/img/35526963_1678028438982294_8817581031352696832_n.jpg`);
 
-    const articleConserto = new Article(`Consertos`, `./data/assets/img/35526963_1678028438982294_8817581031352696832_n.jpg`);
+    const articleConserto = new Article(`Consertos`, `../data/assets/img/35526963_1678028438982294_8817581031352696832_n.jpg`);
 
-    const articleTrocaSegredo = new Article(`Troca de Segredo`, `./data/assets/img/35526963_1678028438982294_8817581031352696832_n.jpg`);
+    const articleTrocaSegredo = new Article(`Troca de Segredo`, `../data/assets/img/35526963_1678028438982294_8817581031352696832_n.jpg`);
 
-    const articleCopias = new Article(`Cópias`, `./data/assets/img/35526963_1678028438982294_8817581031352696832_n.jpg`);
+    const articleCopias = new Article(`Cópias`, `../data/assets/img/35526963_1678028438982294_8817581031352696832_n.jpg`);
 
     const servicesSection = document.getElementById('services');
 
@@ -173,13 +173,13 @@ function enderecoLoad() {
 }
 
 function residencialLoad() {
-    const cadeadi = new Article(`Comum`, `./data/assets/img/367460405_6590736087687768_8940837777860267499_n.jpg`);
+    const cadeadi = new Article(`Comum`, `../data/assets/img/367460405_6590736087687768_8940837777860267499_n.jpg`);
 
-    const chaveTetra = new Article(`Tetra`, `./data/assets/img/367460405_6590736087687768_8940837777860267499_n.jpg`);
+    const chaveTetra = new Article(`Tetra`, `../data/assets/img/367460405_6590736087687768_8940837777860267499_n.jpg`);
     
-    const chaveGorge = new Article(`Gorge`, `./data/assets/img/367460405_6590736087687768_8940837777860267499_n.jpg`);
+    const chaveGorge = new Article(`Gorge`, `../data/assets/img/367460405_6590736087687768_8940837777860267499_n.jpg`);
 
-    const chaveMultiPonto = new Article(`Multiponto`, `./data/assets/img/367460405_6590736087687768_8940837777860267499_n.jpg`);
+    const chaveMultiPonto = new Article(`Multiponto`, `../data/assets/img/367460405_6590736087687768_8940837777860267499_n.jpg`);
 
     const servicesSection = document.getElementById('services');
     
@@ -225,7 +225,7 @@ function automotivoLoad() {
 };
 
 function produtoLoad() {
-    const articleCopiadora = new Article(`Copiadora`, `./data/assets/img/367460405_6590736087687768_8940837777860267499_n.jpg`);
+    const articleCopiadora = new Article(`Copiadora`, `../data/assets/img/367460405_6590736087687768_8940837777860267499_n.jpg`);
     
     const servicesSection = document.getElementById('services');
     

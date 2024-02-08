@@ -280,13 +280,13 @@ function categoriaLoad() {
     tituloOrcamento.innerText = `Para solicitar um orçamento, por favor, escolha uma das categorias de serviço abaixo:`;
     cancelarRetornar.innerHTML = ``;
     
-    const residencial = new Artigo(`Residencial`, null, './data/assets/img/house.png')
+    const residencial = new Artigo(`Residencial`, null, '../data/assets/img/house.png')
     const elementResidencial = residencial.makeImgArticle();
 
-    const automotivo = new Artigo(`Automotivo`, null, './data/assets/img/car.png');
+    const automotivo = new Artigo(`Automotivo`, null, '../data/assets/img/car.png');
     const elementAutomotivo = automotivo.makeImgArticle();
 
-    // const equipamentos = new Artigo(`Equipamentos`, null, './data/assets/img/equip.png');
+    // const equipamentos = new Artigo(`Equipamentos`, null, '../data/assets/img/equip.png');
     // const elementEquipamentos = equipamentos.makeImgArticle();
 
     servicesSection.innerHTML = ``;
@@ -307,16 +307,16 @@ function residencialLoad() {
     previousArticle = 'residencialSection';
         tituloOrcamento.innerText = `Por favor, escolha qual fechamento se encaixa no seu tipo de serviço:`;
     menuOrcamento();
-    const porta = new Artigo(`Porta`, `./data/assets/img/porta.png`);
+    const porta = new Artigo(`Porta`, `../data/assets/img/porta.png`);
     const elementPorta = porta.makeImgArticle();
 
-    const cadeado = new Artigo(`Cadeado`, `./data/assets/img/cadeado.png`);
+    const cadeado = new Artigo(`Cadeado`, `../data/assets/img/cadeado.png`);
     const elementCadeado = cadeado.makeImgArticle();
     
-    const cofre = new Artigo(`Cofre`, `./data/assets/img/cofres-residenciais-camuflados-schier-moveis-min.png`);
+    const cofre = new Artigo(`Cofre`, `../data/assets/img/cofres-residenciais-camuflados-schier-moveis-min.png`);
     const elementCofre = cofre.makeImgArticle();
     
-    const gaveta = new Artigo(`Gaveta`, `./data/assets/img/fechaduragaveta.png`);
+    const gaveta = new Artigo(`Gaveta`, `../data/assets/img/fechaduragaveta.png`);
     const elementGaveta = gaveta.makeImgArticle();
 
     
@@ -344,16 +344,16 @@ function chavesLoad() {
     previousArticle = 'chavesSection'
     tituloOrcamento.innerText = `Por favor, indique com qual tipo a chave deste serviço se parece:`;
     
-    const chaveComum = new Artigo('Comum', './data/assets/img/chaveyale.png');
+    const chaveComum = new Artigo('Comum', '../data/assets/img/chaveyale.png');
     const elementChaveComum = chaveComum.makeImgArticle();
     
-    const chaveTetra = new Artigo('Tetra', './data/assets/img/chaverTetra.png');
+    const chaveTetra = new Artigo('Tetra', '../data/assets/img/chaverTetra.png');
     const elementChaveTetra = chaveTetra.makeImgArticle();
     
-    const chaveGorge = new Artigo('Gorge', './data/assets/img/chavegorge.png');
+    const chaveGorge = new Artigo('Gorge', '../data/assets/img/chavegorge.png');
     const elementChaveGorge = chaveGorge.makeImgArticle();
     
-    const chaveMultiPonto = new Artigo('Multiponto', './data/assets/img/multiponto.png');
+    const chaveMultiPonto = new Artigo('Multiponto', '../data/assets/img/multiponto.png');
     const elementChaveMultiponto = chaveMultiPonto.makeImgArticle();
     
     servicesSection.innerHTML = '';
