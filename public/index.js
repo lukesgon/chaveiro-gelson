@@ -1,4 +1,4 @@
-import Budget from "../data/budget.js";
+import Budget from "./data/budget.js";
 
 window.addEventListener('load', () => {
     const slots = document.querySelectorAll('.slot');
